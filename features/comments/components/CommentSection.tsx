@@ -1,0 +1,44 @@
+                                                  
+import { createClient } from '@/lib/supabase/server'
+import { getCommentsByPost } from '../queries'
+import { CommentForm } from './CommentForm'
+import { CommentList } from './CommentList'
+import type { Role } from '@/lib/permissions'
+
+interface CommentSectionProps {
+  postId: string
+  postSlug: string
+}
+
+export async function CommentSection({ postId, postSlug }: CommentSectionProps) {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  let currentProfile: { id: string; full_name: string | null; role: string } | null = null
+  if (user) {
+    const { data } = await supabase
+      .from('profiles')
+      .select('id, full_name, role')
+      .eq('id', user.id)
+      .single()
+    currentProfile = data
+  }
+  const comments = await getCommentsByPost(postId)
+  return (
+    <section className="mt-12 space-y-8 border-t-2 border-black pt-8">
+      <div>
+        <h2 className="mb-4 text-lg font-bold">Leave a Comment</h2>
+        <CommentForm
+          postId={postId}
+          postSlug={postSlug}
+          authorName={currentProfile?.full_name ?? null}
+        />
+      </div>
+      <CommentList
+        comments={comments}
+        currentProfileId={currentProfile?.id ?? null}
+        currentProfileRole={(currentProfile?.role as Role) ?? null}
+        postSlug={postSlug}
+      />
+    </section>
+  )
+}
