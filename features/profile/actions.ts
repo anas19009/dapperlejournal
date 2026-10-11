@@ -80,7 +80,7 @@ export async function deleteAvatar() {
   const { data: files = [], error: listError } = await avatarsBucket.list(profile.id)
   if (listError) return { error: listError.message }
 
-  pathsToRemove = files.map((file) => `${profile.id}/${file.name}`)
+  pathsToRemove = (files ?? []).map((file) => `${profile.id}/${file.name}`)
 
   if (!pathsToRemove.length && profile.avatar_url) {
     try {
