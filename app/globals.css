@@ -870,13 +870,46 @@
 
   @media (max-width: 640px) {
     .public-shell .public-main-header {
-      min-height: 3.75rem;
+      display: grid;
+      grid-template-columns: 30px minmax(0, 1fr);
+      row-gap: 0.5rem;
+      min-height: 0;
     }
 
     .public-shell .public-header-brand {
+      position: static;
+      grid-column: 1 / -1;
+      grid-row: 1;
+      justify-self: center;
+      transform: none;
       padding: 0.3rem 0.55rem;
       font-size: 0.62rem;
       letter-spacing: 0.16em;
+    }
+
+    .public-shell .public-header-mark {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .public-shell .public-main-header > nav {
+      grid-column: 2;
+      grid-row: 2;
+      justify-content: flex-end;
+      margin-left: 0;
+    }
+
+    .public-shell .public-main-header > nav > div:last-child {
+      gap: 0.35rem;
+    }
+
+    .public-shell .public-main-header > nav > div:last-child a {
+      padding-right: 0.5rem;
+      padding-left: 0.5rem;
+    }
+
+    .public-shell .public-main-header > nav:has(form) > div:last-child {
+      display: none;
     }
 
     .public-shell .public-header-mark img {
