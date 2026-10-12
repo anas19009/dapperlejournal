@@ -1,8 +1,6 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { Instagram, Mail } from 'lucide-react'
-import { NavAuthButton } from '@/components/NavAuthButton'
-import { HeaderSearch } from '@/components/HeaderSearch'
+import { PublicNavbar } from '@/components/PublicNavbar'
 import { Toaster } from 'sonner'
 import { createClient } from '@/lib/supabase/server'
 
@@ -15,40 +13,7 @@ export default async function PublicLayout({ children }: { children: React.React
 
   return (
     <div className="public-shell min-h-screen flex flex-col">
-      <header className="sticky top-0 z-50 border-b-2 border-black bg-background">
-        <div className="public-main-header container relative mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3 md:gap-4">
-          <Link href="/" className="public-header-mark group flex min-w-0 items-center gap-2.5">
-            <div className="relative h-10 w-10 overflow-hidden border-2 border-black bg-white shadow-[2px_2px_0_0_#000]">
-              <Image src="/logo.png" alt="Moroccan Dapper logo" width={40} height={40} className="h-full w-full object-contain p-1" />
-            </div>
-            <span className="public-header-brand brand-name text-base text-foreground sm:text-lg">Moroccan Dapper</span>
-          </Link>
-          <nav className="ml-auto flex items-center gap-2 sm:gap-3">
-            <Link
-              href="/blog"
-              className="hidden border-2 border-transparent px-3 py-1.5 text-sm font-semibold text-foreground hover:border-black hover:bg-white md:inline-flex"
-            >
-              Articles
-            </Link>
-            <HeaderSearch />
-            <NavAuthButton />
-          </nav>
-        </div>
-        <nav className="public-category-nav border-t border-black/10" aria-label="Blog categories">
-          <div className="container mx-auto flex max-w-6xl items-center gap-1 overflow-x-auto px-4 py-2.5 sm:justify-center sm:gap-2">
-            <Link href="/blog" className="public-category-link public-category-all shrink-0">Latest</Link>
-            {(categories ?? []).filter((category) => category.slug !== 'latest').map((category) => (
-              <Link
-                key={category.slug}
-                href={`/blog/category/${category.slug}`}
-                className="public-category-link shrink-0"
-              >
-                {category.name}
-              </Link>
-            ))}
-          </div>
-        </nav>
-      </header>
+      <PublicNavbar categories={categories ?? []} />
       <main className="flex-1">{children}</main>
       <Toaster richColors />
       <footer className="border-t-2 border-black bg-white">
