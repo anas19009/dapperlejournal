@@ -13,7 +13,7 @@ import type { TagWithCount } from '@/features/posts/queries'
 
 export const metadata: Metadata = {
   title: 'Home',
-  description: 'Moroccan Dapper — style notes, culture, and dispatches with a hard editorial edge.',
+  description: 'Moroccan Dapper is an independent journal on Moroccan menswear: tailoring, craft, culture and the people behind the clothes.',
 }
 
 export const revalidate = 60

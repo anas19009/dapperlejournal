@@ -1,9 +1,10 @@
+import Image from 'next/image'
 import Link from 'next/link'
+import { Instagram, Mail } from 'lucide-react'
 import { NavAuthButton } from '@/components/NavAuthButton'
 import { HeaderSearch } from '@/components/HeaderSearch'
 import { Toaster } from 'sonner'
 import { createClient } from '@/lib/supabase/server'
-import { PublicMascot } from '@/components/PublicMascot'
 
 export default async function PublicLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient()
@@ -15,15 +16,17 @@ export default async function PublicLayout({ children }: { children: React.React
   return (
     <div className="public-shell min-h-screen flex flex-col">
       <header className="sticky top-0 z-50 border-b-2 border-black bg-background">
-        <div className="public-main-header container relative mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-          <Link href="/" className="public-header-mark group flex items-center gap-2.5">
-            <PublicMascot />
+        <div className="public-main-header container relative mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3 md:gap-4">
+          <Link href="/" className="public-header-mark group flex min-w-0 items-center gap-2.5">
+            <div className="relative h-10 w-10 overflow-hidden border-2 border-black bg-white shadow-[2px_2px_0_0_#000]">
+              <Image src="/logo.png" alt="Moroccan Dapper logo" width={40} height={40} className="h-full w-full object-contain p-1" />
+            </div>
+            <span className="public-header-brand brand-name text-base text-foreground sm:text-lg">Moroccan Dapper</span>
           </Link>
-          <Link href="/" className="public-header-brand brand-name text-lg text-foreground">Moroccan Dapper</Link>
-          <nav className="flex items-center gap-2 sm:gap-3">
+          <nav className="ml-auto flex items-center gap-2 sm:gap-3">
             <Link
               href="/blog"
-              className="hidden border-2 border-transparent px-3 py-1.5 text-sm font-semibold text-foreground hover:border-black hover:bg-white sm:inline-flex"
+              className="hidden border-2 border-transparent px-3 py-1.5 text-sm font-semibold text-foreground hover:border-black hover:bg-white md:inline-flex"
             >
               Articles
             </Link>
@@ -49,15 +52,22 @@ export default async function PublicLayout({ children }: { children: React.React
       <main className="flex-1">{children}</main>
       <Toaster richColors />
       <footer className="border-t-2 border-black bg-white">
-        <div className="container mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="brand-name text-base text-foreground">Moroccan Dapper</p>
             <p className="mt-1 text-xs text-muted-foreground">Style notes, culture, and dispatches.</p>
           </div>
-          <div className="flex flex-wrap gap-3 text-sm font-semibold">
+          <div className="flex flex-wrap items-center gap-3 text-sm font-semibold">
             <Link href="/" className="border-2 border-black bg-white px-3 py-1 shadow-[2px_2px_0_0_#000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none">Home</Link>
             <Link href="/blog" className="border-2 border-black bg-accent px-3 py-1 shadow-[2px_2px_0_0_#000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none">Articles</Link>
-            <Link href="/login" className="border-2 border-black bg-secondary px-3 py-1 text-white shadow-[2px_2px_0_0_#000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none">Login</Link>
+            <Link href="https://www.instagram.com/moroccandapper" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 border-2 border-black bg-white px-3 py-1 shadow-[2px_2px_0_0_#000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none">
+              <Instagram className="h-4 w-4" />
+              Instagram
+            </Link>
+            <a href="mailto:moroccandapper@gmail.com" className="inline-flex items-center gap-2 border-2 border-black bg-white px-3 py-1 shadow-[2px_2px_0_0_#000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none">
+              <Mail className="h-4 w-4" />
+              moroccandapper@gmail.com
+            </a>
           </div>
         </div>
         <div className="border-t-2 border-black bg-muted/40 py-3 text-center text-xs text-muted-foreground">

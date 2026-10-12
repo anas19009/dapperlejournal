@@ -14,7 +14,7 @@ export default async function DashboardLayout({
     <AuthProvider>
       <div className="dashboard-shell flex h-screen min-w-0 overflow-x-hidden">
         <Sidebar profile={profile} />
-        <main className="min-w-0 flex-1 overflow-x-hidden overflow-y-auto bg-white pt-32 md:pt-0">
+        <main className="min-w-0 flex-1 overflow-x-hidden overflow-y-auto bg-white pt-32 lg:pt-0">
           {children}
         </main>
       </div>

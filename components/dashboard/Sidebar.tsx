@@ -92,7 +92,7 @@ export function Sidebar({ profile }: SidebarProps) {
           </span>
           <span className="text-[10px] uppercase tracking-widest text-muted-foreground">Dashboard</span>
         </Link>
-        <button className="absolute right-4 top-4 p-1 text-muted-foreground hover:text-foreground md:hidden" onClick={() => setMobileOpen(false)} aria-label="Close menu">
+        <button className="absolute right-4 top-4 p-1 text-muted-foreground hover:text-foreground lg:hidden" onClick={() => setMobileOpen(false)} aria-label="Close menu">
           <X className="h-5 w-5" />
         </button>
       </div>
@@ -133,7 +133,7 @@ export function Sidebar({ profile }: SidebarProps) {
 
   return (
     <>
-      <div className="relative fixed left-0 right-0 top-0 z-30 h-32 items-center justify-center border-b-2 border-black bg-background px-4 md:hidden">
+      <div className="fixed left-0 right-0 top-0 z-30 h-32 items-center justify-center border-b-2 border-black bg-background px-4 lg:hidden">
         <Link href="/" className="flex flex-col items-center gap-0.5 text-center">
           <DashboardMascot size={80} />
           <span className="text-center text-xs font-semibold text-foreground">
@@ -143,9 +143,9 @@ export function Sidebar({ profile }: SidebarProps) {
         <button onClick={() => setMobileOpen(true)} className="absolute right-4 top-4 p-1 text-muted-foreground hover:text-foreground" aria-label="Open menu"><Menu className="h-5 w-5" /></button>
       </div>
 
-      {mobileOpen && <div className="fixed inset-0 z-40 bg-black/60 md:hidden" onClick={() => setMobileOpen(false)} aria-hidden="true" />}
+      {mobileOpen && <div className="fixed inset-0 z-40 bg-black/60 lg:hidden" onClick={() => setMobileOpen(false)} aria-hidden="true" />}
 
-      <aside className={cn('fixed left-0 top-0 z-50 flex h-screen w-64 flex-col border-r-2 border-black bg-background transition-transform duration-300 ease-in-out', 'md:sticky md:z-auto md:translate-x-0 md:overflow-y-auto', mobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0')}>
+      <aside className={cn('fixed left-0 top-0 z-50 flex h-screen w-64 flex-col border-r-2 border-black bg-background transition-transform duration-300 ease-in-out', 'lg:sticky lg:z-auto lg:translate-x-0 lg:overflow-y-auto', mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0')}>
         {sidebarContent}
       </aside>
     </>

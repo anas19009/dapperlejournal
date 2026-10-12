@@ -13,6 +13,9 @@ export default async function globalSetup() {
   if (!supabaseUrl || !serviceKey) {
     throw new Error('Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY in .env.local')
   }
+  if (supabaseUrl.includes('your-project-ref')) {
+    throw new Error('NEXT_PUBLIC_SUPABASE_URL in .env.local is still the placeholder URL. Set it to your real Supabase project URL before running E2E tests.')
+  }
   const supabase = createClient(supabaseUrl, serviceKey, {
     auth: { autoRefreshToken: false, persistSession: false },
   })                                                                            

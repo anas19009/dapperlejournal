@@ -7,7 +7,7 @@ export const revalidate = 60
 
 export const metadata: Metadata = {
   title: 'Articles',
-  description: 'Practical knowledge for engineers who ship.',
+  description: 'Essays on Moroccan menswear: tailoring, craft, culture and the ideas behind how men dress. Sourced, and never a styling tip.',
 }
 
 interface BlogPageProps {
@@ -25,11 +25,11 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   return (
     <div className="public-page container mx-auto max-w-6xl space-y-10 px-4 py-12 animate-page">
       
-      <div className="public-page-header space-y-3 border-2 border-black bg-white p-6 shadow-[4px_4px_0_0_#000]">
+      <div className="public-page-header space-y-3 border-2 border-black bg-white p-6 shadow-[4px_4px_0_0_#000] md:p-8">
         <p className="inline-block border-2 border-black bg-accent px-2 py-0.5 text-xs font-bold uppercase tracking-[0.25em] text-black">Moroccan Dapper / Dispatches</p>
         <h1 className="text-4xl font-bold tracking-tight">All Articles</h1>
         <p className="max-w-xl text-base text-muted-foreground">
-          Practical knowledge, style notes, and architecture-level thinking — framed and published.
+          Essays on style, craft and culture, written from Morocco. No trends, no how-to-wear.
         </p>
       </div>
 

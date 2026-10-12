@@ -75,7 +75,7 @@ export function NavAuthButton() {
 
   if (user === null) {
     return (
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-3">
         <Link
           href="/login"
           className="border-2 border-black bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-wider shadow-[2px_2px_0_0_#000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"

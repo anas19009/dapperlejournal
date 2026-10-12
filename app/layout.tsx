@@ -31,13 +31,10 @@ export const metadata: Metadata = {
     template: "%s | Moroccan Dapper",
   },
   description:
-    "Style notes, culture, and dispatches from Moroccan Dapper.",
+    "Moroccan Dapper is an independent journal on Moroccan menswear: tailoring, craft, culture and the people behind the clothes.",
   icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-    ],
-    apple: "/apple-touch-icon.png",
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    apple: "/favicon.png",
   },
 };
 
